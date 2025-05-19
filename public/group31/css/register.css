@@ -1,0 +1,65 @@
+/*The css file of the register page*/
+
+body {
+    margin: 0;
+    background-color: rgb(230, 230, 250);
+    display: flex;
+    justify-content: center;
+}
+
+section{
+    font-size: 40px;
+    text-align: center;
+    height: 80vh;
+    margin: 0
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    background-color: white;
+}
+
+input{
+    height: 5vh;
+    width: auto;
+    font-size: 20px;
+    margin: 15px 40px 0;
+    border: 1px solid blue;
+}
+
+.register-button{
+    height: 50px;
+    font-size: 20px;
+    margin: 40px 40px 0;
+    background-color: blue;
+    color: white;
+}
+
+a {
+    font-size: 20px;
+    color: black;
+    margin: 20px;
+}
+
+h1{
+    margin: 10px 0;
+}
+
+#errorMessage {
+    display: inline;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: red;
+
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
