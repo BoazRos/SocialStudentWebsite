@@ -51,7 +51,7 @@ app.get("/login", function (req, res) {
 })
 
 //request to change information when user sends a form with changed profile information
-app.post("/group31/api/changeInformation", async function (req, res){
+app.post("/api/ changeInformation", async function (req, res){
     let user_id = req.cookies.id;
     let username = req.body.username;
     let first_name = req.body.first_name;
@@ -75,10 +75,10 @@ app.post("/group31/api/changeInformation", async function (req, res){
   
     }
 
-    res.redirect("/group31/home")
+    res.redirect("/home")
 })
 
-app.post("/group31/api/register",
+app.post("/api/register",
   function (req, res) {
     let username = req.body.username;
     let password = req.body.password;
@@ -96,13 +96,13 @@ app.post("/group31/api/register",
         console.log(err);
         res.send("Failed to create user: " + err);
       } else {
-          res.redirect("/group31/login");
+          res.redirect("/login");
       }
     }); 
   }
 );
 
-app.post("/group31/api/message",
+app.post("/api/message",
     function (req, res) {
         let message = req.body.message;
         let otherUsername = req.body.otherUsername;
@@ -164,7 +164,7 @@ app.get("/api/message",
     }
 );
 
-app.post("/group31/api/login",
+app.post("/api/login",
   function (req, res) {
     let username = req.body.username;
     let password = req.body.password;
@@ -178,13 +178,13 @@ app.post("/group31/api/login",
     }).then((user) => {
     console.log(user);
     if (user.length == 0) {
-        res.redirect('/group31/login');
+        res.redirect('/login');
       return;
     }
     const token = jwt.sign({id: user[0].id}, 'secretKeyWebtech', {expiresIn: '1h',});
     res.cookie('authorization', token);
     res.cookie('id', user[0].id);
-    res.redirect('/group31/home') 
+    res.redirect('/home') 
     }).catch((error) => {console.error("Auth error:" + error); res.status(500).send(error)} );
   }
 );
@@ -337,7 +337,7 @@ app.get("/api/follows",
   }
 );
 
-app.post("/group31/profile",
+app.post("/profile",
   function (req, res) {
 
     let username = req.body.username;
@@ -397,7 +397,7 @@ app.get("/chat",
     }
 );
 
-app.post("/group31/api/createFriendRequest",
+app.post("/api/createFriendRequest",
   function (req, res) {
     const decoded = jwt.verify(req.cookies.authorization, 'secretKeyWebtech');
     let user_id_reciever = parseInt(req.query.friendid);
@@ -414,7 +414,7 @@ app.post("/group31/api/createFriendRequest",
   }
 );
 
-app.post("/group31/api/acceptFriendRequest",
+app.post("/api/acceptFriendRequest",
   function (req, res) {
     const decoded = jwt.verify(req.cookies.authorization, 'secretKeyWebtech');
     let user_id_reciever = parseInt(req.query.friendid);
